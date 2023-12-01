@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -11,8 +11,83 @@ generator client {
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 // TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Product {
+  id           Int      @id @default(autoincrement())
+  name         String
+  rate         Float
+  btl_per_case Int
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  extra        Json?
+  Bottle       Bottle[]
+}
+
+model Bottle {
+  id       Int     @id @default(autoincrement())
+  product  Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  quantity Int
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  extra      Json?
+
+  productId Int @unique
+}
+
+model Party {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  extra      Json?
+  Purchase   Purchase[]
+}
+
+model Purchase {
+  id         Int      @id @default(autoincrement())
+  invoiceNo  String
+  date       DateTime
+  party      Party    @relation(fields: [partyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  bottles    Json
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  total      Json
+  extra      Json?
+  partyId    Int
+}
+
+model Floor {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  extra      Json?
+  Table      Table[]
+}
+
+model Table {
+  id    Int    @id @default(autoincrement())
+  name  String
+  floor Floor  @relation(fields: [floorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  extra      Json?
+  floorId    Int
+}
+
+model User {
+  id                  Int       @id @default(autoincrement())
+  name                String?
+  email               String    @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  roles               String
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt
+  extra               Json?
 }
