@@ -8,10 +8,34 @@ import {
   NumberField,
   Submit,
 } from '@redwoodjs/forms'
+import { useEffect, useState } from 'react'
+import Select from 'react-select'
+import { convertObjectValuesToUpper } from 'src/Utils/Utils'
 
 const TableForm = (props) => {
+  const [floors, setFloors] = useState([])
+  const [defaultFloor, setDefaultFloor] = useState()
+  const [floorId, setFloorId] = useState()
+
+  useEffect(() => {
+    const arrFloor = props.floors.map((item) => {
+      const obj = { 'label': item.name, 'value': item.id }
+      return obj
+    })
+    // // console.log(arrPat)
+    setFloors(arrFloor)
+  }, [])
+
   const onSubmit = (data) => {
+    data['floorId'] = floorId
+    data['occupied'] = false
+    data = convertObjectValuesToUpper(data)
     props.onSave(data, props?.table?.id)
+  }
+  const changeFloorId = (item) => {
+    // // console.log(item)
+    setDefaultFloor(item)
+    setFloorId(item.value)
   }
 
   return (
@@ -24,6 +48,7 @@ const TableForm = (props) => {
           listClassName="rw-form-error-list"
         />
 
+<div className='flex items-center mt-3  gap-x-4'>
         <Label
           name="name"
           className="rw-label"
@@ -31,6 +56,7 @@ const TableForm = (props) => {
         >
           Name
         </Label>
+        <div className="flex-1">
 
         <TextField
           name="name"
@@ -39,44 +65,36 @@ const TableForm = (props) => {
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
+        </div>
 
         <FieldError name="name" className="rw-field-error" />
+        </div>
 
-        <Label
-          name="extra"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Extra
-        </Label>
+        <div className='flex items-center mt-3  gap-x-4'>
+          <Label
+            name="floorId"
+            className="rw-label mt-0"
+            errorClassName="rw-label mt-0 rw-label-error"
+          >
+            Floor
+          </Label>
 
-        <TextAreaField
-          name="extra"
-          defaultValue={JSON.stringify(props.table?.extra)}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ valueAsJSON: true }}
-        />
-
-        <FieldError name="extra" className="rw-field-error" />
-
-        <Label
+          {/* <NumberField
           name="floorId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Floor id
-        </Label>
-
-        <NumberField
-          name="floorId"
-          defaultValue={props.table?.floorId}
+          defaultValue={props.bed?.floorId}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
-        />
+        /> */}
+          <div className=" flex-1">
+            <Select options={floors} onChange={changeFloorId} isClearable={true}
+              value={defaultFloor}
 
-        <FieldError name="floorId" className="rw-field-error" />
+            />
+          </div>
+
+          <FieldError name="floorId" className="rw-field-error" />
+        </div>
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

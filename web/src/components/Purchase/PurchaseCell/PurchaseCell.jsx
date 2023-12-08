@@ -4,11 +4,18 @@ export const QUERY = gql`
   query FindPurchaseById($id: Int!) {
     purchase: purchase(id: $id) {
       id
+      invoiceNo
+      date
+      total
       bottles
       created_at
       updated_at
       extra
       partyId
+      party{
+        id
+        name
+      }
     }
   }
 `

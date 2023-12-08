@@ -15,6 +15,13 @@ export const createTable = ({ input }) => {
     data: input,
   })
 }
+export const neworder = ({ tableId }) => {
+  return db.Sale.findMany({
+    where: {
+      tableId:tableId
+    },
+  })
+}
 
 export const updateTable = ({ id, input }) => {
   return db.table.update({
@@ -32,5 +39,8 @@ export const deleteTable = ({ id }) => {
 export const Table = {
   floor: (_obj, { root }) => {
     return db.table.findUnique({ where: { id: root?.id } }).floor()
+  },
+  Sale: (_obj, { root }) => {
+    return db.table.findUnique({ where: { id: root?.id } }).Sale()
   },
 }

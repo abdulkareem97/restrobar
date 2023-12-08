@@ -15,15 +15,11 @@ export const schema = gql`
 
   input CreateFloorInput {
     name: String!
-    created_at: DateTime!
-    updated_at: DateTime!
     extra: JSON
   }
 
   input UpdateFloorInput {
     name: String
-    created_at: DateTime
-    updated_at: DateTime
     extra: JSON
   }
 

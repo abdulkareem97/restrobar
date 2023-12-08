@@ -7,9 +7,11 @@ import {
   TextAreaField,
   Submit,
 } from '@redwoodjs/forms'
+import { convertObjectValuesToUpper } from 'src/Utils/Utils'
 
 const FloorForm = (props) => {
   const onSubmit = (data) => {
+    data = convertObjectValuesToUpper(data)
     props.onSave(data, props?.floor?.id)
   }
 
@@ -41,23 +43,7 @@ const FloorForm = (props) => {
 
         <FieldError name="name" className="rw-field-error" />
 
-        <Label
-          name="extra"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Extra
-        </Label>
 
-        <TextAreaField
-          name="extra"
-          defaultValue={JSON.stringify(props.floor?.extra)}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ valueAsJSON: true }}
-        />
-
-        <FieldError name="extra" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

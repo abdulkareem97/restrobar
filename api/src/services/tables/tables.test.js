@@ -23,13 +23,15 @@ describe('tables', () => {
     const result = await createTable({
       input: {
         name: 'String',
-        updated_at: '2023-12-01T11:50:12.497Z',
+        occupied: true,
+        updated_at: '2023-12-02T06:45:49.842Z',
         floorId: scenario.table.two.floorId,
       },
     })
 
     expect(result.name).toEqual('String')
-    expect(result.updated_at).toEqual(new Date('2023-12-01T11:50:12.497Z'))
+    expect(result.occupied).toEqual(true)
+    expect(result.updated_at).toEqual(new Date('2023-12-02T06:45:49.842Z'))
     expect(result.floorId).toEqual(scenario.table.two.floorId)
   })
 

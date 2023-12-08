@@ -3,18 +3,20 @@ export const standard = defineScenario({
     one: {
       data: {
         name: 'String',
-        updated_at: '2023-12-01T11:50:12.510Z',
+        occupied: true,
+        updated_at: '2023-12-02T06:45:49.896Z',
         floor: {
-          create: { name: 'String', updated_at: '2023-12-01T11:50:12.510Z' },
+          create: { name: 'String', updated_at: '2023-12-02T06:45:49.896Z' },
         },
       },
     },
     two: {
       data: {
         name: 'String',
-        updated_at: '2023-12-01T11:50:12.510Z',
+        occupied: true,
+        updated_at: '2023-12-02T06:45:49.896Z',
         floor: {
-          create: { name: 'String', updated_at: '2023-12-01T11:50:12.510Z' },
+          create: { name: 'String', updated_at: '2023-12-02T06:45:49.896Z' },
         },
       },
     },

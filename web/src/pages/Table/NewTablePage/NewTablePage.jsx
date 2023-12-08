@@ -1,7 +1,7 @@
-import NewTable from 'src/components/Table/NewTable'
+import NewTableCell from 'src/components/Table/NewTableCell'
 
 const NewTablePage = () => {
-  return <NewTable />
+  return <NewTableCell />
 }
 
 export default NewTablePage
