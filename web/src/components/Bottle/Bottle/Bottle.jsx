@@ -44,6 +44,10 @@ const Bottle = ({ bottle }) => {
               <td>{bottle.id}</td>
             </tr>
             <tr>
+              <th>Product Name</th>
+              <td>{bottle.product.name}</td>
+            </tr>
+            <tr>
               <th>Quantity</th>
               <td>{bottle.quantity}</td>
             </tr>
@@ -55,19 +59,16 @@ const Bottle = ({ bottle }) => {
               <th>Updated at</th>
               <td>{timeTag(bottle.updated_at)}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <th>Extra</th>
               <td>{jsonDisplay(bottle.extra)}</td>
-            </tr>
-            <tr>
-              <th>Product id</th>
-              <td>{bottle.productId}</td>
-            </tr>
+            </tr> */}
+
           </tbody>
         </table>
       </div>
       <nav className="rw-button-group">
-        <Link
+        {/* <Link
           to={routes.editBottle({ id: bottle.id })}
           className="rw-button rw-button-blue"
         >
@@ -79,7 +80,7 @@ const Bottle = ({ bottle }) => {
           onClick={() => onDeleteClick(bottle.id)}
         >
           Delete
-        </button>
+        </button> */}
       </nav>
     </>
   )

@@ -55,10 +55,10 @@ const Party = ({ party }) => {
               <th>Updated at</th>
               <td>{timeTag(party.updated_at)}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <th>Extra</th>
               <td>{jsonDisplay(party.extra)}</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

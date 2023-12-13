@@ -37,7 +37,7 @@ const Sale = ({ sale }) => {
             Sale {sale.id} Detail
           </h2>
         </header>
-        <table className="rw-table">
+        {/* <table className="rw-table">
           <tbody>
             <tr>
               <th>Id</th>
@@ -64,10 +64,101 @@ const Sale = ({ sale }) => {
               <td>{sale.tableId}</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
+
+        <div className="p-2 w-full shadow-sm bg-white text-black ">
+          <div className=" grid grid-cols-6 grid-flow-row gap-x-2 gap-y-2">
+
+            <div className="flex col-span-3 justify-center">Name</div>
+            <div className="flex col-span-1 justify-center">Price</div>
+            <div className="flex col-span-1 justify-center">Quantity</div>
+            <div className="flex col-span-1 justify-center">Total</div>
+
+
+
+          {
+            sale.bottles.map((item)=>{
+              return (
+                <>
+                <div className="flex col-span-3 justify-center">{item.name}</div>
+                <div className="flex col-span-1 justify-center">{item.price}</div>
+                <div className="flex col-span-1 justify-center">{item.quantity}</div>
+                <div className="flex col-span-1 justify-center">{item.total}</div>
+                </>
+              )
+            })
+          }
+          </div>
+
+
+
+
+        <div className='flex items-center mt-3 justify-end gap-x-4'>
+          <div
+            name="total"
+            className="rw-label mt-0"
+            errorClassName="rw-label rw-label-error"
+          >
+            Total
+          </div>
+          <div className="flex">
+            {sale.total.total}
+          </div>
+
+        </div>
+
+        <div className='flex items-center mt-3 justify-end gap-x-4'>
+
+
+          <div
+            name="discount"
+            className="rw-label mt-0"
+            errorClassName="rw-label rw-label-error"
+          >
+            Discount % :-
+          </div>
+
+          <div className='flex'>
+
+
+            {sale.total.disc}
+          </div>
+
+
+          <div
+            name="discountamt"
+            className="rw-label mt-0"
+            errorClassName="rw-label rw-label-error"
+          >
+            Discount Amount :-
+          </div>
+
+          <div className='flex'>
+
+
+            {
+              sale.total.disamt
+            }
+          </div>
+        </div>
+        <div className='flex items-center mt-3 justify-end gap-x-4'>
+          <div
+            name="grand_total"
+            className="rw-label mt-0"
+            errorClassName="rw-label rw-label-error"
+          >
+            Grand total
+          </div>
+          <div className="flex">
+            {sale.total.grand_total}
+          </div>
+
+        </div>
+      </div>
+
       </div>
       <nav className="rw-button-group">
-        <Link
+        {/* <Link
           to={routes.editSale({ id: sale.id })}
           className="rw-button rw-button-blue"
         >
@@ -79,7 +170,7 @@ const Sale = ({ sale }) => {
           onClick={() => onDeleteClick(sale.id)}
         >
           Delete
-        </button>
+        </button> */}
       </nav>
     </>
   )

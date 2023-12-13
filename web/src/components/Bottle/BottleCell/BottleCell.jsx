@@ -9,6 +9,10 @@ export const QUERY = gql`
       updated_at
       extra
       productId
+      product{
+        id
+        name
+      }
     }
   }
 `

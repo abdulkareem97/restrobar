@@ -11,6 +11,9 @@ export const QUERY = gql`
       status
       extra
       tableId
+      table{
+        name
+      }
     }
   }
 `

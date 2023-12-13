@@ -87,7 +87,7 @@ const Routes = () => {
             <Route path="/parties" page={PartyPartiesPage} name="parties" />
           </Set>
 
-          <Set wrap={ScaffoldLayout} title="Bottles" titleTo="bottles" buttonLabel="New Bottle" buttonTo="newBottle">
+          <Set wrap={ScaffoldLayout} title="Bottles" titleTo="bottles" buttonLabel="New Bottle" buttonTo="newBottle" hide={true}>
             <Route path="/bottles/new" page={BottleNewBottlePage} name="newBottle" />
             <Route path="/bottles/{id:Int}/edit" page={BottleEditBottlePage} name="editBottle" />
             <Route path="/bottles/{id:Int}" page={BottleBottlePage} name="bottle" />
@@ -113,7 +113,7 @@ const Routes = () => {
 
 
 
-          <Set wrap={ScaffoldLayout} title="Sales" titleTo="sales" buttonLabel="New Sale" buttonTo="newSale">
+          <Set wrap={ScaffoldLayout} title="Sales" titleTo="sales" buttonLabel="New Sale" buttonTo="newSale" hide={true}>
             <Route path="/sales/new" page={SaleNewSalePage} name="newSale" />
             <Route path="/sales/{id:Int}/edit" page={SaleEditSalePage} name="editSale" />
             <Route path="/sales/{id:Int}" page={SaleSalePage} name="sale" />

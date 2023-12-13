@@ -59,10 +59,10 @@ const Menu = ({ menu }) => {
               <th>Updated at</th>
               <td>{timeTag(menu.updated_at)}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <th>Extra</th>
               <td>{jsonDisplay(menu.extra)}</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

@@ -11,6 +11,12 @@ export const QUERY = gql`
       updated_at
       extra
       partyId
+      date
+      total
+      party{
+        id
+        name
+      }
     }
   }
 `
