@@ -20,6 +20,8 @@ export const schema = gql`
     status: String!
     extra: JSON
     tableId: Int!
+    orders: JSON!
+    occupied: Boolean!
   }
 
   input UpdateSaleInput {
@@ -31,7 +33,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createSale(input: CreateSaleInput!): Sale! @requireAuth
+    createSale(input: CreateSaleInput!,id: Int): Sale! @requireAuth
     updateSale(id: Int!, input: UpdateSaleInput!): Sale! @requireAuth
     deleteSale(id: Int!): Sale! @requireAuth
   }

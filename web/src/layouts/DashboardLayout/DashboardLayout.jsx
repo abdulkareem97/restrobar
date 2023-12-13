@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }) => {
   const [prevtext, setPrevText] = useState('')
   const isAdmin = currentUser?.roles == 'admin'
 
-  console.log(useAuth())
+  console.log(currentUser)
 
   const toggleDropDown = (text) => {
     if (prevtext == text) {
@@ -40,7 +40,7 @@ const DashboardLayout = ({ children }) => {
         <div className="fixed w-full flex items-center justify-between h-14 text-white z-10">
           <div className="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-gray-800 border-none">
             <img className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-full overflow-hidden" src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg" />
-            {/* <span className="hidden md:block"> {currentUser.email} </span> */}
+            <span className="hidden md:block"> {currentUser.email} </span>
             {/* <span className="hidden md:block"> {'hello'} </span> */}
           </div>
           <div className="flex justify-end items-center h-14 bg-gray-800 w-full">

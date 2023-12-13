@@ -18,7 +18,8 @@ export const createTable = ({ input }) => {
 export const neworder = ({ tableId }) => {
   return db.Sale.findMany({
     where: {
-      tableId:tableId
+      tableId:tableId,
+      status:'pending'
     },
   })
 }
